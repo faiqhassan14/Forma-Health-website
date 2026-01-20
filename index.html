@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma Health - Healthy Food Partner</title>
+    <link rel="shortcut icon" href="https://forma-app.com/POZE/logoforma.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #8BC34A;
+            --accent-color: #FF9800;
+            --dark-color: #2E7D32;
+            --light-color: #F1F8E9;
+            --text-color: #333;
+            --text-light: #666;
+            --white: #fff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 80px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards 0.3s;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--light-color);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards 0.5s;
+        }
+
+        .hero-btns {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards 0.7s;
+        }
+
+        .hero-btns .btn {
+            margin: 0 10px;
+        }
+
+        .hero-btns .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .hero-btns .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--dark-color);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark-color);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-img {
+            height: 220px;
+            background-color: #f5f5f5;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-content h3 {
+            color: var(--dark-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .product-content p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            min-height: 80px;
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: var(--dark-color);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(rgba(76, 175, 80, 0.05), rgba(76, 175, 80, 0.05));
+        }
+
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+        }
+
+        .testimonial {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.5s, transform 0.5s;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .testimonial.active {
+            opacity: 1;
+            transform: translateX(0);
+            position: relative;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .testimonial-rating {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .subscribe-form button {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .subscribe-form button:hover {
+            background-color: #F57C00;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: #ddd;
+            margin-top: 10px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        .footer-bottom a {
+            color: #ddd;
+            text-decoration: none;
+            margin: 0 5px;
+            transition: var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Featured Products */
+        .featured-products {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05));
+        }
+
+        .featured-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .featured-product {
+            text-align: center;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .featured-product:hover {
+            transform: translateY(-5px);
+        }
+
+        .featured-product img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .featured-product h4 {
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 130px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-btns .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                max-width: 250px;
+            }
+
+            .subscribe-form {
+                flex-direction: column;
+            }
+
+            .subscribe-form input {
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
+            .subscribe-form button {
+                border-radius: 5px;
+                padding: 12px;
+            }
+
+            .product-content p {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i> Forma Health
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#featured">Featured</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Healthy Food Partner</h1>
+            <p>Shop smart with Forma Health—fuel your hair from the inside out. Enjoy healthier life with nutrient-rich plant-based foods.</p>
+            <div class="hero-btns">
+                <a href="#" class="btn">Shop now →</a>
+                <a href="#" class="btn btn-outline">Order process</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Fresh & Healthy Products</h2>
+                <p>Discover our selection of nutrient-rich plant-based foods that nourish your body and mind.</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fresh Green Zucchini Slices">
+                    </div>
+                    <div class="product-content">
+                        <h3>Fresh Green Zucchini Slices</h3>
+                        <p>Crisp, vibrant, and naturally low in calories, our freshly sliced zucchini is perfect for salads, stir-fries, or healthy snacks.</p>
+                        <div class="product-price">$4.99 / pack</div>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Zucchini slices in a wooden bowl">
+                    </div>
+                    <div class="product-content">
+                        <h3>Zucchini Slices in Wooden Bowl</h3>
+                        <p>Crisp zucchini slices rest beautifully in a rustic wooden bowl, bringing natural elegance to your table. Perfect for healthy snacking.</p>
+                        <div class="product-price">$6.99 / bowl</div>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sunomono Japanese Cucumber Salad">
+                    </div>
+                    <div class="product-content">
+                        <h3>Sunomono Japanese Cucumber Salad</h3>
+                        <p>Light, refreshing, and delicately tangy—Sunomono is a traditional Japanese salad that delights the senses with every bite.</p>
+                        <div class="product-price">$5.99 / serving</div>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products" id="featured">
+        <div class="container">
+            <div class="section-title">
+                <h2>Food Shopping Made Joyful</h2>
+                <p>We make grocery shopping easy, affordable, and reliable. From farm-to-table produce to your favorite daily essentials.</p>
+            </div>
+            <div class="featured-products-grid">
+                <div class="featured-product">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fresh Salad Bowl">
+                    <h4>Fresh Salad Bowls</h4>
+                    <p>Ready-to-eat nutritious salads</p>
+                </div>
+                <div class="featured-product">
+                    <img src="https://images.unsplash.com/photo-1546069901-d5bfd2cbfb1f?ixlib=rb-4.0.3&auto=format&fit=crop&w-600&q=80" alt="Organic Vegetables">
+                    <h4>Organic Vegetables</h4>
+                    <p>Farm-fresh organic produce</p>
+                </div>
+                <div class="featured-product">
+                    <img src="https://images.unsplash.com/photo-1494390248081-4e521a5940db?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Healthy Smoothies">
+                    <h4>Healthy Smoothies</h4>
+                    <p>Freshly blended nutrient-packed drinks</p>
+                </div>
+                <div class="featured-product">
+                    <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Avocado Toast">
+                    <h4>Avocado Toast</h4>
+                    <p>Healthy breakfast options</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>A Seamless Food Experience</h2>
+                <p>We make grocery shopping easy, affordable, and reliable. From farm-to-table produce to your favorite daily essentials.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Easy Shopping</h3>
+                    <p>Simple and intuitive interface that makes finding and ordering your favorite foods a breeze.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Get your fresh produce delivered to your door in as little as 2 hours from ordering.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Farm Fresh</h3>
+                    <p>We partner with local farms to bring you the freshest, most sustainable produce available.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>100% Organic</h3>
+                    <p>All our products are certified organic, free from pesticides and harmful chemicals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>Eco-Friendly</h3>
+                    <p>We use sustainable packaging and work to minimize our environmental footprint.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer service team is always ready to help with any questions or concerns.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn">Learn More About Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hear From Our Clients</h2>
+                <p>We make grocery shopping easy, affordable, and reliable. From farm-to-table produce to your favorite daily essentials.</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial active">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        "Forma Health has transformed how I eat. The quality of their produce is exceptional, and their delivery service is always on time. I've never felt better!"
+                    </div>
+                    <div class="testimonial-author">- Sarah M., Nutritionist</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        "As someone with dietary restrictions, finding fresh, healthy options was always a challenge. Forma Health makes it so easy to get exactly what I need."
+                    </div>
+                    <div class="testimonial-author">- James L., Fitness Coach</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        "The convenience and quality are unmatched. I love that I can get farm-fresh vegetables delivered right to my door. It's changed my cooking completely."
+                    </div>
+                    <div class="testimonial-author">- Maria T., Chef</div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <div class="slider-dot active" data-slide="0"></div>
+                <div class="slider-dot" data-slide="1"></div>
+                <div class="slider-dot" data-slide="2"></div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn">Read More Testimonials</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Subscribe Now</h4>
+                    <p>Get the latest updates on new products and promotions.</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <div style="margin-top: 20px;">
+                        <a href="#" class="btn" style="display: block; text-align: center;">Add to Cart</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Help & Support</h4>
+                    <ul>
+                        <li><a href="#">Shipping & Delivery</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Track My Order</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Ingredient Standards</a></li>
+                        <li><a href="#">Sustainability Promise</a></li>
+                        <li><a href="#">Press & Media</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Have questions? We've got answers.</h4>
+                    <div class="faq-item active">
+                        <div class="faq-question">What are your delivery hours? <i class="fas fa-chevron-down"></i></div>
+                        <div class="faq-answer">We deliver from 8 AM to 10 PM daily, including weekends. Same-day delivery available for orders placed before 3 PM.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">How do I know if the products are fresh? <i class="fas fa-chevron-down"></i></div>
+                        <div class="faq-answer">All our products are sourced daily from local farms and delivered within 24 hours of harvest. We guarantee freshness!</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Do you offer organic products? <i class="fas fa-chevron-down"></i></div>
+                        <div class="faq-answer">Yes! All our produce is certified organic and free from pesticides, hormones, and harmful chemicals.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <a href="#">Privacy Policy</a> · 
+                <a href="#">Terms</a> · 
+                <a href="#">Cookies</a> · 
+                <a href="#">Accessibility</a>
+                <p>© 2025 Groify. All rights reserved</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">Healthy Food Partner - Nourishing Your Body, Nourishing Your Life</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Testimonial slider
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            // Hide all testimonials
+            testimonials.forEach(testimonial => {
+                testimonial.classList.remove('active');
+            });
+            
+            // Remove active class from all dots
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Show the selected testimonial
+            testimonials[n].classList.add('active');
+            dots[n].classList.add('active');
+            currentSlide = n;
+        }
+
+        // Add click event to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Auto slide testimonials
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % testimonials.length;
+            showSlide(currentSlide);
+        }
+
+        // Set interval for auto sliding
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        // Pause auto sliding when hovering over testimonials
+        const testimonialSlider = document.querySelector('.testimonials-slider');
+        testimonialSlider.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        testimonialSlider.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Scroll animations
+        function checkScroll() {
+            const elements = document.querySelectorAll('.section-title, .product-card, .feature-card, .featured-product');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.animation = 'fadeUp 0.8s forwards';
+                }
+            });
+        }
+
+        // Initial check on load
+        window.addEventListener('load', checkScroll);
+        
+        // Check on scroll
+        window.addEventListener('scroll', checkScroll);
+
+        // Form submission
+        document.querySelector('.subscribe-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            if (email) {
+                alert(`Thank you for subscribing with ${email}! You'll receive our updates soon.`);
+                this.reset();
+            }
+        });
+
+        // Add to cart buttons
+        document.querySelectorAll('.product-card .btn, .btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.classList.contains('btn') && this.parentElement.querySelector('h3')) {
+                    e.preventDefault();
+                    const productName = this.parentElement.querySelector('h3').textContent;
+                    const productPrice = this.parentElement.querySelector('.product-price')?.textContent || '$4.99';
+                    alert(`Added ${productName} (${productPrice}) to your cart!`);
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if(this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Preload images for better performance
+        window.addEventListener('load', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if(img.complete) {
+                    img.style.opacity = '1';
+                } else {
+                    img.addEventListener('load', function() {
+                        this.style.opacity = '1';
+                        this.style.transition = 'opacity 0.5s';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
